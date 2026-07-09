@@ -1,0 +1,189 @@
+{
+  "signals": {
+    "project_name": "Zycus - Titan S2P Implementation",
+    "project_manager": "Aftab Hashambhai",
+    "as_of": "2026-07-02",
+    "data_confidence_pct": 100.0,
+    "data_confidence_notes": [],
+    "pct_complete": 0.71,
+    "total_tasks": 476,
+    "tasks_with_variance": 254,
+    "pct_tasks_slipped": 62.6,
+    "mean_variance_days": -11.2,
+    "worst_variance_days": -63.0,
+    "worst_variance_task": "Load delta master data via integration",
+    "variance_trend": [
+      [
+        "2025-12-05",
+        0.0
+      ],
+      [
+        "2026-02-03",
+        0.0
+      ],
+      [
+        "2026-02-20",
+        0.6
+      ],
+      [
+        "2026-03-20",
+        -0.6
+      ],
+      [
+        "2026-03-26",
+        -2.7
+      ],
+      [
+        "2026-04-03",
+        -4.6
+      ],
+      [
+        "2026-04-09",
+        -5.8
+      ],
+      [
+        "2026-05-19",
+        -5.3
+      ],
+      [
+        "2026-06-16",
+        -5.7
+      ],
+      [
+        "2026-06-26",
+        -5.8
+      ]
+    ],
+    "current_phase": "Configuration and Build phase",
+    "phase_rag_counts": {
+      "Contract Sign Off": "Green",
+      "Project Initiation and Data Gathering": "Green",
+      "Configuration Documentation Workshop": "Amber",
+      "Configuration and Build phase": "Unknown",
+      "UAT": "Amber",
+      "Train The Trainer": "Amber",
+      "Production & Cutover": "Amber",
+      "Go-Live & Support intro": "Amber",
+      "Hyper Care(Measure and Adoption) Solution": "Amber",
+      "Project Initiation & Data Gathering": "Amber",
+      "Configuration Documentation workshop": "Amber",
+      "User Acceptance Testing (UAT)": "Unknown",
+      "P2P Cutover": "Amber"
+    },
+    "phases_red": [],
+    "overdue_not_started": 4,
+    "overdue_not_started_examples": [
+      "Develop & Publish 1st draft of Implementation Approach Document (IAD) for eProc-eInvoice",
+      "eProc-eInvoice IAD Review and Sign off by Titan",
+      "Master data inbound",
+      "Master data discussion overall and connectivity-2 master data-Increase the days based on master data count including DDT/DMT"
+    ],
+    "on_hold_count": 3,
+    "on_hold_examples": [
+      "Supplier Notification template",
+      "OTK to share D&B creds",
+      "Enable D & B App"
+    ],
+    "at_risk_count": 4,
+    "stalled_in_progress": 13,
+    "stalled_in_progress_examples": [
+      "Functional Confuguration on Staging System/ Setup",
+      "Update configurations based as per IAD (Solution Design) using agreed Commodity, Division Tree & Project Stages",
+      "Supplier Information Management with Integration",
+      "iSupplier Deployment",
+      "Repo Sample Supplier Upload on STAGING for iSource/iContract/iRisk"
+    ],
+    "negative_float_critical_count": 0,
+    "critical_total": 14,
+    "critical_slipped": 11,
+    "critical_slipped_examples": [
+      "Setup PRODUCTION environment (Integration) - Zycus",
+      "Schedule for quality check",
+      "Perform quality checks, PSRs as per quality checklist and submit to QC team",
+      "Quality Check by Zycus QC team",
+      "First Go-Live communication to all suppliers"
+    ],
+    "sentiment_score": -0.43,
+    "sentiment_negative_hits": [
+      {
+        "text": "Yet to recieve Sign off",
+        "matched": [
+          "yet to"
+        ]
+      },
+      {
+        "text": "Yet to recieve Sign off",
+        "matched": [
+          "yet to"
+        ]
+      },
+      {
+        "text": "TBD ,depends on 66,67,68",
+        "matched": [
+          "tbd"
+        ]
+      },
+      {
+        "text": "Due to parallel phase 1 activities onsite workshop dates are impacted",
+        "matched": [
+          "impacted"
+        ]
+      },
+      {
+        "text": "JDE mapping is pending only",
+        "matched": [
+          "pending"
+        ]
+      }
+    ],
+    "sentiment_positive_hits": 2,
+    "sentiment_sample_size": 16,
+    "unique_owners": 2,
+    "owner_concentration_pct": 66.7,
+    "raw_task_level_rag_counts": {
+      "NaN": 166,
+      "Amber": 146,
+      "Green": 121,
+      "Red": 60
+    }
+  },
+  "verdict": {
+    "status": "Red",
+    "composite_score": 44.6,
+    "sub_scores": {
+      "schedule": 49.0,
+      "milestone": 60.3,
+      "blockers": 20.0,
+      "sentiment": 63.5,
+      "critical_path": 21.4
+    },
+    "overrides_triggered": [
+      {
+        "id": "critical_task_slipped",
+        "description": "11 critical-path task(s) have slipped their baseline.",
+        "effect": "capped at Amber"
+      },
+      {
+        "id": "unresolved_blocker",
+        "description": "3 task(s) are On Hold: Supplier Notification template, OTK to share D&B creds, Enable D & B App.",
+        "effect": "capped at Amber"
+      }
+    ],
+    "reasoning_trail": [
+      "Schedule (35% weight, score 49.0/100): 62.6% of tasks with recorded variance are behind baseline (mean variance -11.2 days; worst case -63.0 days on 'Load delta master data via integration').",
+      "Milestones (25% weight, score 60.3/100): 0 of 13 phases are currently Red and 9 Amber (current phase: 'Configuration and Build phase'). 4 task(s) are Not Started despite a baseline finish date already in the past.",
+      "Blockers (25% weight, score 20.0/100): 3 task(s) On Hold (Supplier Notification template, OTK to share D&B creds, Enable D & B App); 13 in-progress task(s) past their baseline finish with no completion; 4 task(s) explicitly flagged At Risk",
+      "Stakeholder sentiment (10% weight, score 63.5/100): Lexical scan of 16 PM/stakeholder comments skews negative (score -0.43); flagged as a low-confidence signal, capped influence on the overall score.",
+      "Critical path (5% weight, score 21.4/100): 11 of 14 critical-path tasks have slipped their baseline.",
+      "Composite score: 44.6/100 -> baseline status before overrides: Red.",
+      "Override [critical_task_slipped]: 11 critical-path task(s) have slipped their baseline. -> capped at Amber.",
+      "Override [unresolved_blocker]: 3 task(s) are On Hold: Supplier Notification template, OTK to share D&B creds, Enable D & B App. -> capped at Amber.",
+      "Final status: Red."
+    ]
+  },
+  "narrative": {
+    "text": "Zycus - Titan S2P Implementation is at serious risk and needs leadership attention now. As of 2026-07-02, the project is 71% complete and the composite health score is 44.6/100.\n\nSchedule: 62.6% of tasks with tracked variance are running behind baseline, averaging 11.2 days. The single worst slip is 'Load delta master data via integration' at -63.0 days.\n\nMilestones: no phases are currently Red. The active phase is 'Configuration and Build phase'.\n\nBlockers: 3 task(s) On Hold (Supplier Notification template, OTK to share D&B creds); 13 in-progress task(s) stuck past their baseline finish; 4 task(s) flagged At Risk.\n\nStakeholder tone: a lexical scan of 16 PM comments reads negative (this is a low-confidence proxy signal, not a survey, and is capped in its influence on the score).\n\nWhy the status may look stricter than the raw score: 11 critical-path task(s) have slipped their baseline.; 3 task(s) are On Hold: Supplier Notification template, OTK to share D&B creds, Enable D & B App.",
+    "mode": "deterministic_fallback"
+  },
+  "data_quality_warnings": []
+}

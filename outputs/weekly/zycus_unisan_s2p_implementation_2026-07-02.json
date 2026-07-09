@@ -1,0 +1,174 @@
+{
+  "signals": {
+    "project_name": "Zycus - UniSan S2P Implementation",
+    "project_manager": "Rajat Bothra",
+    "as_of": "2026-07-02",
+    "data_confidence_pct": 92.0,
+    "data_confidence_notes": [
+      "No 'Level' column found; used 'Ancestors' as the WBS hierarchy depth instead.",
+      "No task-level 'RAG' column found; used 'Schedule Health' as a proxy for task color.",
+      "'Variance' column was empty at task level; used 'Variance2' instead (duplicate-column artifact in source file).",
+      "'Baseline Start' column was empty at task level; used 'Baseline Start2' instead (duplicate-column artifact in source file).",
+      "'Baseline Finish' column was empty at task level; used 'Baseline Finish2' instead (duplicate-column artifact in source file).",
+      "Phase/Milestone column is empty; inferring phases from depth-1 task names instead.",
+      "Missing/empty required fields project-wide: RAG"
+    ],
+    "pct_complete": 0.44,
+    "total_tasks": 343,
+    "tasks_with_variance": 129,
+    "pct_tasks_slipped": 0.8,
+    "mean_variance_days": 1.2,
+    "worst_variance_days": -8.0,
+    "worst_variance_task": "Review SOW with UniSan",
+    "variance_trend": [
+      [
+        "2026-02-11",
+        0.0
+      ],
+      [
+        "2026-03-09",
+        0.9
+      ],
+      [
+        "2026-03-17",
+        1.9
+      ],
+      [
+        "2026-04-16",
+        1.3
+      ],
+      [
+        "2026-04-27",
+        1.1
+      ],
+      [
+        "2026-05-05",
+        0.9
+      ],
+      [
+        "2026-05-08",
+        0.9
+      ],
+      [
+        "2026-05-26",
+        1.0
+      ],
+      [
+        "2026-06-02",
+        0.8
+      ],
+      [
+        "2026-06-03",
+        0.9
+      ]
+    ],
+    "current_phase": "Training Phase I",
+    "phase_rag_counts": {
+      "Contract Sign Off": "Green",
+      "Project Initiation and Data Gathering": "Green",
+      "Configuration Validation & Documentation": "Red",
+      "Single Sign On and User details Integration": "Green",
+      "Contract Management with Basic Setup": "Green",
+      "Supplier Information Management with Integration": "Red",
+      "User Acceptance Testing (UAT) Phase I": "Green",
+      "UAT Completion I": "Green",
+      "Value KPI Sign-off": "Green",
+      "Training Phase I": "Red",
+      "Training Completion": "Green",
+      "Production Migration Phase I": "Green",
+      "KPI Reports to be migrated on PROD": "Green",
+      "Sanity on Production for iContract and iSupplier": "Green",
+      "Go /No-go Check Point ( Meeting with UniSan) for iContract & iSupplier": "Green",
+      "Release Zycus system to all users  for iContract and iSupplier": "Green",
+      "Production Go-Live Phase I": "Green",
+      "Hypercare Phase I": "Red",
+      "eProc and eInvoice and Merlin APSD": "Amber",
+      "iSource Configuration": "Green",
+      "Merlin Intake Configuration": "Green",
+      "User Acceptance Testing (UAT) Phase II": "Green",
+      "UAT Completion": "Green",
+      "Training Phase II": "Green",
+      "Production Migration Phase II": "Green",
+      "Sanity on Production - iSource and Merlin Intake": "Green",
+      "Go /No-go Check Point ( Meeting with UniSan) - iSource and Merlin Intake": "Green",
+      "Release Zycus system to all users -  iSource and Merlin Intake": "Green",
+      "Sanity on Production  -  iSupplier, eProc, eInvoice and CLM": "Green",
+      "Go /No-go Check Point ( Meeting with UniSan)  -  iSupplier, eProc, eInvoice and CLM": "Green",
+      "Release Zycus system to all users  -  iSupplier, eProc, eInvoice and CLM": "Green",
+      "Production Go-Live Phase II": "Green",
+      "Hypercare Phase II": "Green"
+    },
+    "phases_red": [
+      "Training Phase I",
+      "Hypercare Phase I",
+      "Configuration Validation & Documentation",
+      "Supplier Information Management with Integration"
+    ],
+    "overdue_not_started": 1,
+    "overdue_not_started_examples": [
+      "Admin Training"
+    ],
+    "on_hold_count": 0,
+    "on_hold_examples": [],
+    "at_risk_count": 0,
+    "stalled_in_progress": 1,
+    "stalled_in_progress_examples": [
+      "Train The Trainer"
+    ],
+    "negative_float_critical_count": 0,
+    "critical_total": 45,
+    "critical_slipped": 0,
+    "critical_slipped_examples": [],
+    "sentiment_score": 0.0,
+    "sentiment_negative_hits": [],
+    "sentiment_positive_hits": 0,
+    "sentiment_sample_size": 0,
+    "unique_owners": 26,
+    "owner_concentration_pct": 19.1,
+    "raw_task_level_rag_counts": {
+      "Green": 332,
+      "Red": 42,
+      "Amber": 9
+    }
+  },
+  "verdict": {
+    "status": "Red",
+    "composite_score": 91.2,
+    "sub_scores": {
+      "schedule": 99.5,
+      "milestone": 83.7,
+      "blockers": 94.0,
+      "sentiment": 70.0,
+      "critical_path": 100.0
+    },
+    "overrides_triggered": [
+      {
+        "id": "milestone_red_and_slipping",
+        "description": "4 phase(s) are Red, including possibly the active phase.",
+        "effect": "forced to Red"
+      }
+    ],
+    "reasoning_trail": [
+      "Schedule (35% weight, score 99.5/100): 0.8% of tasks with recorded variance are behind baseline (mean variance 1.2 days; worst case -8.0 days on 'Review SOW with UniSan').",
+      "Milestones (25% weight, score 83.7/100): 4 of 33 phases are currently Red and 1 Amber (current phase: 'Training Phase I'). 1 task(s) are Not Started despite a baseline finish date already in the past.",
+      "Blockers (25% weight, score 94.0/100): 1 in-progress task(s) past their baseline finish with no completion",
+      "Stakeholder sentiment (10% weight, score 70.0/100): Too few free-text comments to assess stakeholder tone reliably (low-confidence signal).",
+      "Critical path (5% weight, score 100.0/100): 0 of 45 critical-path tasks have slipped their baseline.",
+      "Composite score: 91.2/100 -> baseline status before overrides: Green.",
+      "Override [milestone_red_and_slipping]: 4 phase(s) are Red, including possibly the active phase. -> forced to Red.",
+      "Final status: Red."
+    ]
+  },
+  "narrative": {
+    "text": "Zycus - UniSan S2P Implementation is at serious risk and needs leadership attention now. As of 2026-07-02, the project is 44% complete and the composite health score is 91.2/100.\n\nSchedule: 0.8% of tasks with tracked variance are running ahead of baseline, averaging 1.2 days. The single worst slip is 'Review SOW with UniSan' at -8.0 days.\n\nMilestones: 4 phase(s) are currently marked Red \u2014 Training Phase I, Hypercare Phase I, Configuration Validation & Documentation, Supplier Information Management with Integration. The active phase is 'Training Phase I'.\n\nBlockers: 1 in-progress task(s) stuck past their baseline finish.\n\nWhy the status may look stricter than the raw score: 4 phase(s) are Red, including possibly the active phase.",
+    "mode": "deterministic_fallback"
+  },
+  "data_quality_warnings": [
+    "No 'Level' column found; used 'Ancestors' as the WBS hierarchy depth instead.",
+    "No task-level 'RAG' column found; used 'Schedule Health' as a proxy for task color.",
+    "'Variance' column was empty at task level; used 'Variance2' instead (duplicate-column artifact in source file).",
+    "'Baseline Start' column was empty at task level; used 'Baseline Start2' instead (duplicate-column artifact in source file).",
+    "'Baseline Finish' column was empty at task level; used 'Baseline Finish2' instead (duplicate-column artifact in source file).",
+    "Phase/Milestone column is empty; inferring phases from depth-1 task names instead."
+  ]
+}
