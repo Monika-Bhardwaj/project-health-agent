@@ -141,7 +141,7 @@
     "unique_owners": 2,
     "owner_concentration_pct": 66.7,
     "raw_task_level_rag_counts": {
-      "NaN": 166,
+      "null": 166,
       "Amber": 146,
       "Green": 121,
       "Red": 60
