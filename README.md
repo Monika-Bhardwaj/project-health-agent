@@ -1,15 +1,9 @@
 # Project Health Reporting Agent
 
-Built for: **AI Engineering Intern assignment — Zycus Professional Services**
-Author: Monika · July 2026
-
 An agentic system that reads raw project-plan exports (the kind PMs already
 maintain in Smartsheet/MS Project), figures out RAG status without a human
 chasing anyone, explains *why* in plain English, and rolls multiple projects
 up into an executive-ready narrative every month.
-
-This README is the "design decisions" deliverable requested in the brief
-(in place of a Loom video).
 
 ---
 
