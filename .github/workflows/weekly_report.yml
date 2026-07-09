@@ -1,0 +1,40 @@
+name: Weekly Project Health Report
+
+# BONUS (Phase 2): run the agent on a weekly schedule automatically.
+# Every Monday 06:00 UTC, ingest all project plans in data/, regenerate
+# reports, and commit the updated reports + history snapshots back to the
+# repo so week-over-week trend data accumulates automatically.
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"   # every Monday, 06:00 UTC
+  workflow_dispatch: {}    # allows manual "Run workflow" trigger too
+
+jobs:
+  weekly-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run weekly reports for every project plan
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/run_weekly_report.py data/*.xlsx
+
+      - name: Run monthly synthesis (cheap to run every week; only used monthly)
+        run: python scripts/run_monthly_synthesis.py
+
+      - name: Commit updated reports & history
+        run: |
+          git config user.name "project-health-agent"
+          git config user.email "actions@github.com"
+          git add outputs/ data/history/
+          git diff --cached --quiet || git commit -m "Automated weekly project health report [skip ci]"
+          git push
