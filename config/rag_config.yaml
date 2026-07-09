@@ -1,0 +1,92 @@
+# =============================================================================
+# RAG Methodology Configuration
+# This file is the single source of truth for how signals turn into a status.
+# Change weights/thresholds here — never hardcode them in agent logic.
+# =============================================================================
+
+signal_weights:
+  schedule: 0.35        # baseline vs. actual slippage, trend of variance
+  milestone: 0.25       # phase-level completion vs. time elapsed
+  blockers: 0.25        # on-hold items, stalled tasks, negative-float risk
+  sentiment: 0.10       # lexical tone of PM/stakeholder comments (low confidence signal)
+  critical_path: 0.05   # slipped tasks flagged Critical in the plan
+
+# Weighted composite score (0-100) maps to a baseline RAG:
+score_thresholds:
+  green_min: 80
+  amber_min: 60          # 60-79.9 = Amber, below 60 = Red
+
+# Hard override rules — these can only make things WORSE than the score,
+# never better. They exist because a few structural problems (e.g. an
+# unresolved blocker on the critical path) are dangerous even when they
+# don't yet show up in an aggregate score.
+overrides:
+  - id: critical_task_slipped
+    description: "Any Critical-path task with negative schedule variance"
+    action: "cap_at_amber"
+  - id: unresolved_blocker_over_14_days
+    description: "An On-Hold / blocked task open for 14+ days with no owner movement"
+    action: "cap_at_amber"
+  - id: milestone_red_and_slipping
+    description: "Current active phase's Schedule Health = Red AND cumulative variance trend worsening over last 3 data points"
+    action: "force_red"
+
+# Sentiment lexicon (lightweight, transparent, auditable — NOT a trained model).
+# This is intentionally simple: a keyword scan over free-text PM comments,
+# used only as a minor, capped signal. See assumptions in the methodology doc.
+sentiment_lexicon:
+  negative:
+    - "delay"
+    - "delayed"
+    - "pending"
+    - "blocked"
+    - "block"
+    - "risk"
+    - "issue"
+    - "escalat"
+    - "concern"
+    - "impacted"
+    - "yet to"
+    - "not received"
+    - "not provided"
+    - "tbd"
+    - "on hold"
+    - "awaiting"
+    - "overdue"
+    - "slip"
+    - "gap"
+    - "reschedule"
+  positive:
+    - "completed"
+    - "sign off"
+    - "signed off"
+    - "approved"
+    - "on track"
+    - "resolved"
+    - "closed"
+    - "confirmed"
+    - "aligned"
+    - "covered all"
+    - "mitigated"
+
+# Data-quality confidence weighting: reports flag a "Data Confidence" score
+# alongside RAG (never silently). This drives how much hedging language the
+# narrative layer uses (see agent/narrative.py).
+data_confidence:
+  required_fields: ["Task Name", "Status", "Start Date", "End Date", "RAG"]
+  penalty_per_missing_field_pct: 8   # per required field missing project-wide, out of 100
+
+# Stall detection
+stall_rules:
+  not_started_overdue_days: 0        # baseline start already passed and task still "Not Started"
+  in_progress_stale_days: 21         # in-progress task with no baseline movement in N days -> flag
+
+# Anthropic model used for the narrative generation layer (Phase 2 requirement:
+# "clear, plain-English reasoning"). The deterministic signals/score above are
+# computed in pure Python for speed, cost-control, and auditability; the LLM's
+# only job is to turn already-verified numbers into prose. It is never allowed
+# to invent a RAG status or a number that isn't in signals_payload.
+llm:
+  model: "claude-sonnet-4-6"
+  max_tokens: 900
+  enabled_by_default: true
